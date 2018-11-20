@@ -1,0 +1,57 @@
+1. Xử lý bắt đối facebook
+
+	API : http://dataparse.bongda69.online:3000/batdoi/fbpost_process
+	METHOD : POST
+	CONTENT TYPE : application/json
+
+- Dữ liệu gửi lên : JSON
+	+) content : String : Nội dung bài post
+
+- Dữ liệu nhận về : JSON
+	+) type : Int : 1 -> 6 (Loại tin)
+	+) phone : JSONArray : Số điện thoại
+		+) phone : String : Số điện thoại liên hệ dạng +84
+		+) origin : String : Số điện thoại gốc trên bài post chưa được chuẩn hóa
+	+) time : JSONObject : Thông tin thời gian của bài post
+		+) day : String : Ngày
+		+) times : JSONArray : Thời gian Giờ - Phút
+			+) Mỗi phần từ là 1 thời gian HH:mm
+		+) origin : JSONObject : Thông tin gốc từ bài post, dùng để debug
+	+) location : JSONObject : Thông tin địa điểm
+		+) address : String : Địa chỉ
+		+) key_word : String : key_word sử dụng để xác định address, dùng để debug
+		
+- Ví dụ :
+
+Dữ liệu gửi lên : 
+
+{"content":"FC Lôm Côm nhận đi khách tối thứ 4 tuần này khung 19h quanh các khu vực HMG, Cầu Giấy, Trung Kính. Đội trình độ tby cận yếu, hạnh kiểm cực tốt nên các đội đá tốt với giỏi võ bỏ qua cho bên em nhé. Em Quang (88) số đt: 084-236-6789","key":1}
+
+Dữ liệu nhận về :
+
+{
+  "type": 1,
+  "phone": [
+    {
+      "origin": "0842366789",
+      "phone": "+84842366789"
+    }
+  ],
+  "time": {
+    "day": "2018-11-14",
+    "times": [
+      "19:00"
+    ],
+    "origin": {
+      "origin_week": "",
+      "origin_day": "thứ 4",
+      "origin_time": [
+        "19h"
+      ]
+    }
+  },
+  "location": {
+    "address": "khu vực HMG, Cầu Giấy, Trung Kính",
+    "key_word": "dia chi"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "fbbatdoi-processing",
+  "version": "1.0.0",
+  "description": "Use Vietnamese NLP to processing bat doi bong da phui post from facebook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saruno/fbbatdoi-processing.git"
+  },
+  "keywords": [
+    "fbbatdoi"
+  ],
+  "author": "thinhnv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saruno/fbbatdoi-processing/issues"
+  },
+  "homepage": "https://github.com/saruno/fbbatdoi-processing#readme",
+  "dependencies": {
+    "google-libphonenumber": "^3.1.15",
+    "hapi": "^17.7.0",
+    "moment": "^2.22.2",
+    "vntk": "^1.4.1"
+  }
+}
